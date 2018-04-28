@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 system "cp eiliasu /usr/local/bin"
+system "mkdir -p /usr/local/etc/eiliasu/"
+system "cp -r scripts/* /usr/local/etc/eiliasu/"
 
 Dir["scripts/*"].each do |file|
   cmd = "cp #{file} /usr/local/bin"

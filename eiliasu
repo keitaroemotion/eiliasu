@@ -1,9 +1,35 @@
 #!/usr/bin/env ruby
 
-puts
-puts "br    ... git branch $@"
-puts "cx    ... chmod +x $@"
-puts "lr    ... ls -lt -r"
-puts "st    ... git status $@"
-puts "rid   ... git rebase -i master"
-puts
+option = ARGV[0]
+
+def call(cmd)
+  puts "[#{cmd}]"
+  system cmd
+end
+
+if option == "man"
+  puts
+  Dir["/usr/local/etc/eiliasu/*"].each do |file|
+    print "#{File.basename(file)}   ... "
+    puts File.open(file, "r")
+           .each_line
+           .to_a
+           .select { |line|
+             /^[\s\t]*[#]+/ != line   
+           }
+           .first[0..100]
+  end
+  puts
+elsif option
+  alias_name = option
+  tmpfile = ".eiliasu_tmp"
+  call "vim #{tmpfile}"
+  call "cp #{tmpfile} /usr/local/bin/#{alias_name}"
+  call "chmod +x /usr/local/bin/#{alias_name}"
+  call "cp #{tmpfile} /usr/local/etc/eiliasu/#{alias_name}"
+  puts("Successfully added alias #{alias_name}! Yay!")
+  call "rm #{tmpfile}"
+else
+  puts "eiliasu man ... show man page"
+  puts "eiliasu add ... add alias"
+end
