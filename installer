@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+system "cp eiliasu /usr/local/bin"
+
+Dir["scripts/*"].each do |file|
+  cmd = "cp #{file} /usr/local/bin"
+  if File.exist?("/usr/local/bin")
+    print "already file #{File.basename(file)} exists. override? [Y/n] "
+    if /^\s*[Yy]\s*$/ =~ $stdin.gets.chomp
+      puts cmd + " ..."
+      system cmd 
+    end
+  end
+end

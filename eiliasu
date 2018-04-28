@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+puts
+puts "br    ... git branch $@"
+puts "cx    ... chmod +x $@"
+puts "lr    ... ls -lt -r"
+puts "st    ... git status $@"
+puts "rid   ... git rebase -i master"
+puts
