@@ -1,4 +1,4 @@
-# eiriasu
+# eiliasu
 
 dozens of POSIX alias commands. This idea is inspired by Curt J Sampson.
 
@@ -26,5 +26,5 @@ $ eiliasu [alias name]
 $ ./update_scripts
 ```
 this command helps if you want to preserve the aliases
-you created. Then upgrade your forked eilias repo and
+you created. Then upgrade your forked alias repo and
 save it on th GitHub server XD
