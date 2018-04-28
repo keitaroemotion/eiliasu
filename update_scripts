@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+Dir["/usr/local/etc/eiliasu/*"].each do |file|
+  cmd = "cp #{file} scripts"
+  puts cmd
+  system cmd
+end
+puts
+puts "aliases successfully imported! Ola!"
